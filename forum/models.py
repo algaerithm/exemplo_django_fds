@@ -1,10 +1,6 @@
 from django.db import models
-
-
-import datetime
+#import datetime
 from django.utils import timezone
-
-
 class Pergunta(models.Model):
     titulo = models.CharField(max_length=200, null=False)
     detalhe = models.TextField(null=False)
@@ -30,9 +26,9 @@ class Resposta(models.Model):
     usuario = models.CharField(max_length=200, null=False, default="anônimo")
 
 
-
     def __str__(self):
         return "[" + str(self.id) + "] " + self.texto
     
     def foi_publicado_recentemente(self):
         return self.data_criacao >= timezone.now() - datetime.timedelta(days=1)
+
